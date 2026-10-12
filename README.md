@@ -2,7 +2,7 @@
 
 **Kannada Digital Innovation Hackathon 2026 · Problem Statement 3: Kannada in Everyday Life** (with a voice layer from Problem Statement 2: Voice of Kannada)
 
-**Live demo:** <PASTE YOUR GITHUB PAGES LINK HERE>
+**Live demo:** https://shashank2602s.github.io/namma-maatu/
 
 ## The problem
 People who move to Karnataka for study or work often can't handle small daily situations in Kannada, such as telling an auto driver where to go, buying vegetables, or describing symptoms at a pharmacy. Textbook-style apps don't prepare them for these real moments.
@@ -39,4 +39,5 @@ Open `index.html` in **Google Chrome or Microsoft Edge** (needed for speech reco
 - Regional dialect variants (links to Problem Statement 4)
 
 ## Author
-<YOUR NAME>, <YOUR COLLEGE>
+SHASHANK BHOOTAPALLY 
+
