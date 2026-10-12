@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Namma Maatu – Kannada in Everyday Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@600;800&family=Noto+Sans+Kannada:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8D6;--ink:#2A1216;--red:#B3121F;--yel:#F6C21B;--card:#fff;--mut:#6b5a54;--ok:#1d7a3e;--bad:#b3121f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e1214;--ink:#fff1c9;--card:#2c1a1d;--mut:#c9b79a;--red:#ff6b6b;--ok:#6ee79a;--bad:#ff8a8a}}
+:root[data-theme="dark"]{--bg:#1e1214;--ink:#fff1c9;--card:#2c1a1d;--mut:#c9b79a;--red:#ff6b6b;--ok:#6ee79a;--bad:#ff8a8a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 "Noto Sans Kannada",system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:20px 16px 60px}
+h1,h2,.d{font-family:"Baloo Tamma 2","Noto Sans Kannada",sans-serif;margin:0}
+.band{height:10px;background:linear-gradient(90deg,var(--yel) 50%,var(--red) 50%)}
+.hero h1{font-size:clamp(56px,16vw,96px);line-height:1;font-weight:800;color:var(--red)}
+.hero p{max-width:34ch;color:var(--mut);margin:8px 0 24px}
+.sc{display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:14px 16px;margin-bottom:12px;color:inherit;font:inherit;cursor:pointer;box-shadow:4px 4px 0 var(--red)}
+.sc:hover{transform:translate(-1px,-1px)}
+.sc b{font-size:20px;display:block}.sc span{color:var(--mut);font-size:15px}.ic{font-size:32px}
+button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.link{background:none;border:0;color:var(--red);font:inherit;font-weight:600;cursor:pointer;padding:6px 0}
+.bar{height:8px;background:var(--card);border:1px solid var(--ink);border-radius:8px;overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;background:var(--red);transition:width .3s}
+.say{background:var(--yel);color:#2A1216;border-radius:16px 16px 16px 4px;padding:14px 16px;margin-bottom:6px}
+.kn{font-size:24px;font-weight:600;line-height:1.35}.tr{font-style:italic}.en{color:var(--mut);font-size:15px}.say .en{color:#5a3d12}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.pill{border:2px solid currentColor;background:transparent;color:inherit;border-radius:999px;padding:6px 14px;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:inherit;border:2px solid var(--ink);border-radius:14px;padding:12px 14px;margin:10px 0;font:inherit;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--card))}
+.opt:disabled{cursor:default}.fb{margin:12px 0;font-weight:600}.good{color:var(--ok)}.nope{color:var(--bad)}
+.mic{background:var(--red);color:#fff;border:0;border-radius:999px;padding:10px 18px;font:inherit;font-weight:600;cursor:pointer}
+.next{display:block;margin:18px 0 0 auto;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:10px 22px;font:inherit;font-weight:600;cursor:pointer}
+.big{font-size:64px;color:var(--red);font-family:"Baloo Tamma 2",sans-serif;font-weight:800}
+.note{font-size:14px;color:var(--mut);margin-top:30px}
+</style></head><body><div class="band"></div><main id="app"></main>
+<script>
+// [kannada, transliteration, english]
+const S=[
+{id:"auto",ic:"🛺",t:"Auto-rickshaw",d:"Name a place, ask for the meter, stop the ride",steps:[
+[["ಎಲ್ಲಿಗೆ ಹೋಗಬೇಕು?","Ellige hogabeku?","Where do you want to go?"],["ಮೈಸೂರು ಅರಮನೆಗೆ ಹೋಗಬೇಕು","Mysuru aramanege hogabeku","I need to go to Mysuru Palace"],["ನನಗೆ ಹಸಿವಾಗಿದೆ","Nanage hasivagide","I am hungry"]],
+[["ನೂರು ರೂಪಾಯಿ ಆಗುತ್ತೆ","Nooru rupayi aagutte","It will be 100 rupees"],["ಮೀಟರ್ ಹಾಕಿ","Meter haaki","Please use the meter"],["ನನಗೆ ಗೊತ್ತಿಲ್ಲ","Nanage gottilla","I don't know"]],
+[["ಇಲ್ಲಿ ನಿಲ್ಲಿಸಲಾ?","Illi nillisala?","Shall I stop here?"],["ಹೌದು, ಇಲ್ಲಿ ನಿಲ್ಲಿಸಿ","Haudu, illi nillisi","Yes, stop here"],["ಇಲ್ಲ, ನೀರು ಬೇಕು","Illa, neeru beku","No, I want water"]]]},
+{id:"mkt",ic:"🍅",t:"Vegetable market",d:"Ask for tomatoes, bargain, ask the total",steps:[
+[["ಏನು ಬೇಕು ಅಮ್ಮಾ?","Enu beku amma?","What would you like?"],["ಒಂದು ಕೆಜಿ ಟೊಮೆಟೊ ಕೊಡಿ","Ondu kg tomato kodi","Give me one kg of tomatoes"],["ಬಸ್ ಎಲ್ಲಿದೆ?","Bus ellide?","Where is the bus?"]],
+[["ಕೆಜಿಗೆ ಮೂವತ್ತು ರೂಪಾಯಿ","Kejige moovattu rupayi","30 rupees per kg"],["ಸ್ವಲ್ಪ ಕಡಿಮೆ ಮಾಡಿ","Swalpa kadime maadi","Please reduce it a little"],["ನಮಸ್ಕಾರ","Namaskara","Hello"]],
+[["ಬೇರೆ ಏನಾದ್ರೂ ಬೇಕಾ?","Bere enadru bekaa?","Anything else?"],["ಇಷ್ಟೇ, ಎಷ್ಟಾಯ್ತು?","Ishte, eshtaytu?","That's all, how much?"],["ನಿಮ್ಮ ಹೆಸರೇನು?","Nimma hesarenu?","What is your name?"]]]},
+{id:"ph",ic:"💊",t:"Pharmacy",d:"Describe a headache, ask about the dose, pay",steps:[
+[["ಏನಾಗಿದೆ?","Enagide?","What's the problem?"],["ನನಗೆ ತಲೆನೋವು ಇದೆ","Nanage talenovu ide","I have a headache"],["ನನಗೆ ಚಹಾ ಬೇಕು","Nanage chaha beku","I want tea"]],
+[["ಈ ಮಾತ್ರೆ ದಿನಕ್ಕೆ ಎರಡು ಸಲ ತೆಗೆದುಕೊಳ್ಳಿ","Ee maatre dinakke eradu sala tegedukolli","Take this tablet twice a day"],["ಊಟದ ಮೊದಲಾ, ನಂತರವಾ?","Uutada modala, nantarava?","Before or after food?"],["ಬಸ್ ಯಾವಾಗ ಬರುತ್ತೆ?","Bus yaavaga barutte?","When does the bus come?"]],
+[["ನೂರಿಪ್ಪತ್ತು ರೂಪಾಯಿ","Nooripattu rupayi","120 rupees"],["ತಗೊಳ್ಳಿ, ಹಣ ಇಲ್ಲಿದೆ","Tagolli, hana illide","Here, take the money"],["ಇಲ್ಲಿ ಶಾಲೆ ಎಲ್ಲಿದೆ?","Illi shaale ellide?","Where is the school here?"]]]}
+];
+const $=document.getElementById("app");let sc,i,score,ok;
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="kn-IN";u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+function bg(s){s=s.replace(/[\s\.,?!]/g,"");const r=new Set();for(let k=0;k<s.length-1;k++)r.add(s.slice(k,k+2));return r}
+function sim(a,b){const x=bg(a),y=bg(b);if(!x.size||!y.size)return 0;let c=0;x.forEach(v=>y.has(v)&&c++);return 2*c/(x.size+y.size)}
+const L=(l,c)=>`<div class="kn">${l[0]}</div><div class="tr">${l[1]}</div><div class="en">${l[2]}</div>`;
+function home(){$.innerHTML=`<div class="hero"><h1 lang="kn">ನಮ್ಮ ಮಾತು</h1><h2>Namma Maatu: Kannada for everyday life</h2><p>Pick a real situation. Listen, answer, then say your reply out loud.</p></div>`+
+S.map((s,n)=>`<button class="sc" data-n="${n}"><span class="ic">${s.ic}</span><span><b class="d">${s.t}</b><span>${s.d}</span></span></button>`).join("")+
+`<p class="note">Voice features work best in Chrome or Edge. Tap "Listen" to hear a phrase, and "Speak it" to get a pronunciation score.</p>`;
+$.querySelectorAll(".sc").forEach(b=>b.onclick=()=>start(+b.dataset.n))}
+function start(n){sc=S[n];i=0;score=0;step()}
+function step(){
+ if(i>=sc.steps.length)return done();
+ const [npc,right,wrong]=sc.steps[i];ok=null;
+ const opts=(i%2?[wrong,right]:[right,wrong]);
+ $.innerHTML=`<div class="top"><button class="link" id="b">Back</button><span>${sc.ic} ${sc.t}</span></div>
+ <div class="bar"><i style="width:${i/sc.steps.length*100}%"></i></div>
+ <div class="say">${L(npc)}<div class="row"><button class="pill" id="l">Listen</button></div></div>
+ <p class="en">Choose your reply:</p><div id="o">${opts.map((o,k)=>`<button class="opt" data-k="${k}">${L(o)}</button>`).join("")}</div><div id="f"></div>`;
+ document.getElementById("b").onclick=home;
+ document.getElementById("l").onclick=()=>say(npc[0]);say(npc[0]);
+ $.querySelectorAll(".opt").forEach(b=>b.onclick=()=>pick(b,opts[+b.dataset.k],right))}
+function pick(b,o,right){
+ $.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ const f=document.getElementById("f");
+ if(o===right){b.classList.add("ok");score++;f.innerHTML=`<div class="fb good">Correct. Now say it aloud.</div><div class="row"><button class="pill" id="h">Listen</button><button class="mic" id="m">🎤 Speak it</button></div><div id="r" class="fb"></div><button class="next" id="n">Next</button>`;
+  document.getElementById("h").onclick=()=>say(right[0]);
+  document.getElementById("m").onclick=()=>listen(right);}
+ else{b.classList.add("bad");  $.querySelectorAll(".opt").forEach(x=>{if(x.textContent.includes(right[1]))x.classList.add("ok")});
+  f.innerHTML=`<div class="fb nope">Not quite. The green reply fits this moment.</div><button class="next" id="n">Next</button>`}
+ document.getElementById("n").onclick=()=>{i++;step()}}
+function listen(right){
+ const r=document.getElementById("r");
+ if(!SR){r.innerHTML=`<span class="en">Speech recognition isn't available in this browser. Open this page in Chrome to get pronunciation scores.</span>`;return}
+ const rec=new SR();rec.lang="kn-IN";rec.maxAlternatives=3;r.textContent="Listening…";
+ rec.onresult=e=>{let best=0,heard="";for(const a of e.results[0]){const s=sim(a.transcript,right[0]);if(s>=best||!heard){best=s;heard=a.transcript}}
+  const p=Math.round(best*100);
+  r.innerHTML=`${p>=70?'<span class="good">Great pronunciation</span>':p>=40?'<span>Close. Listen again and retry</span>':'<span class="nope">Try again, slowly</span>'} · match ${p}%<div class="en">We heard: ${heard}</div>`};
+ rec.onerror=e=>r.innerHTML=`<span class="nope">Couldn't hear you (${e.error}). Allow microphone access and try again.</span>`;
+ try{rec.start()}catch(e){}}
+function done(){$.innerHTML=`<div class="top"><button class="link" id="b">All situations</button></div><div class="big">${score}/${sc.steps.length}</div><h2>${sc.t} complete</h2><p>${score===sc.steps.length?"Perfect run. You can use these phrases today.":"Replay to get every reply right."}</p><button class="next" id="a" style="margin:0">Replay</button>`;
+ document.getElementById("b").onclick=home;document.getElementById("a").onclick=()=>{i=0;score=0;step()}}
+home();
+</script></body></html>
